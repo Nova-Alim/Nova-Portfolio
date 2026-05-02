@@ -19,5 +19,7 @@ export const projects= [{
 
 ];
 
+export const aboutMe=" I’m Nova Alim, someone who enjoys the balance of relaxing and building things. In my free time, I like playing games, going on walks with my dog, and exploring anything related to computers. That curiosity naturally led me into coding, where I’ve developed a strong passion for building software and turning ideas into functional, creative projects!"
+
 
 

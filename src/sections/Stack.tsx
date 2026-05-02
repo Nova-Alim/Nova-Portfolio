@@ -45,7 +45,9 @@ return (
                 </div>
 
                 <div> 
+                    
                     <h1 className="text-xs text-gray-500 mb-4"> TOOLS</h1>
+                    
                     <div className="mt-3 flex  gap-2">
                     <span className={tagstyle}> Git</span>
                     <span className={tagstyle}> Unix/Linux</span>
