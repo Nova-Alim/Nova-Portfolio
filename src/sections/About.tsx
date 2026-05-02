@@ -1,5 +1,5 @@
 import {aboutMe} from "../constants/constant.tsx"
-
+import profilePic from "../assets/profile.jpg"
 
 
 function copyEmail (){
@@ -25,7 +25,7 @@ function About(){
         
         <div className="flex flex-col items-center justify-center gap-4 w-1/2">
         <img
-          src="src/assets/Profile Picture.JPG"
+          src={profilePic}
           className="h-50 w-50 object-cover object-[20%_30%] rounded-full"
         />
         <h2 className="text-2xl font-semibold">Nova Alim</h2>
