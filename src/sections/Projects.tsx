@@ -32,25 +32,25 @@ function Projects() {
     return (
         <section
             id="projects"
-            className="min-h-screen flex flex-col items-center justify-center px-6 py-20"
+            className="min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 py-20"
         >
-            <h2 className="text-5xl font-bold mb-12">
+            <h2 className="text-4xl sm:text-5xl font-bold mb-8 sm:mb-12">
                 Projects
             </h2>
 
-            <div className="w-full max-w-6xl flex items-center gap-6">
+            <div className="w-full max-w-6xl flex items-center gap-2 sm:gap-6">
 
                 {/* Previous Button */}
                 <button
                     onClick={prevClick}
-                    className="shrink-0 w-12 h-12 rounded-full border border-white/10 bg-white/5 backdrop-blur-xl hover:bg-white/10 hover:border-white/20 hover:scale-110 transition-all duration-300 text-xl shadow-lg"
+                    className="shrink-0 w-9 h-9 sm:w-12 sm:h-12 rounded-full border border-white/10 bg-white/5 backdrop-blur-xl hover:bg-white/10 hover:border-white/20 hover:scale-110 transition-all duration-300 text-base sm:text-xl shadow-lg"
                 >
                     ←
                 </button>
 
                 {/* Project Card */}
                 <div
-                    className={`flex-1 h-[650px] rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl overflow-hidden shadow-2xl transition-all duration-500 ${
+                    className={`flex-1 min-w-0 min-h-[600px] sm:h-[650px] rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl overflow-hidden shadow-2xl transition-all duration-500 ${
                         isChanging
                             ? "opacity-40 scale-[0.98] blur-[2px]"
                             : "opacity-100 scale-100 blur-0"
@@ -58,7 +58,7 @@ function Projects() {
                 >
 
                     {/* Project Images */}
-                    <div className="h-[420px] w-full flex items-center justify-center gap-8 bg-black/20 overflow-hidden p-8">
+                    <div className="h-[350px] sm:h-[420px] w-full flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 bg-black/20 overflow-hidden p-5 sm:p-8">
 
                         {slides[currentIndex].images ? (
                             slides[currentIndex].images.map(
@@ -67,7 +67,7 @@ function Projects() {
                                         key={index}
                                         src={image}
                                         alt={`${slides[currentIndex].title} screen ${index + 1}`}
-                                        className="h-full max-w-[45%] object-contain drop-shadow-2xl transition-transform duration-500 hover:scale-[1.03]"
+                                        className="h-[45%] sm:h-full max-w-[70%] sm:max-w-[45%] object-contain drop-shadow-2xl transition-transform duration-500 hover:scale-[1.03]"
                                     />
                                 )
                             )
@@ -82,13 +82,13 @@ function Projects() {
                     </div>
 
                     {/* Project Information */}
-                    <div className="h-[230px] p-8 flex flex-col justify-center border-t border-white/10 bg-white/[0.02]">
+                    <div className="min-h-[250px] sm:h-[230px] p-5 sm:p-8 flex flex-col justify-center border-t border-white/10 bg-white/[0.02]">
 
-                        <h3 className="text-3xl font-semibold mb-4">
+                        <h3 className="text-2xl sm:text-3xl font-semibold mb-3 sm:mb-4">
                             {slides[currentIndex].title}
                         </h3>
 
-                        <p className="text-white/60 leading-relaxed">
+                        <p className="text-sm sm:text-base text-white/60 leading-relaxed">
                             {slides[currentIndex].text}
                         </p>
 
@@ -99,7 +99,7 @@ function Projects() {
                 {/* Next Button */}
                 <button
                     onClick={nextClick}
-                    className="shrink-0 w-12 h-12 rounded-full border border-white/10 bg-white/5 backdrop-blur-xl hover:bg-white/10 hover:border-white/20 hover:scale-110 transition-all duration-300 text-xl shadow-lg"
+                    className="shrink-0 w-9 h-9 sm:w-12 sm:h-12 rounded-full border border-white/10 bg-white/5 backdrop-blur-xl hover:bg-white/10 hover:border-white/20 hover:scale-110 transition-all duration-300 text-base sm:text-xl shadow-lg"
                 >
                     →
                 </button>
@@ -107,7 +107,7 @@ function Projects() {
             </div>
 
             {/* Slide Indicators */}
-            <div className="flex gap-2 mt-8">
+            <div className="flex gap-2 mt-6 sm:mt-8">
                 {slides.map((_, index) => (
                     <button
                         key={index}
