@@ -56,6 +56,14 @@ function About() {
                 <p className="max-w-lg text-sm sm:text-base font-semibold leading-relaxed">
                     {aboutMe}
                 </p>
+                 <a
+                  href="https://www.linkedin.com/in/nova-alim"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2 rounded-xl bg-white/10 border border-white/20 hover:bg-white/20 cursor-pointer transition-all duration-300 backdrop-blur-md"
+                >
+                  Connect with me
+                  </a>
 
             </div>
 
