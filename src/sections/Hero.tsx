@@ -20,7 +20,7 @@ function Hero() {
                 </h1>
 
                 <p className="text-lg sm:text-xl md:text-2xl font-semibold leading-relaxed">
-                    Im a full stack Software Engineer with a passion for building products for form and function
+                    I'm a full stack Software Engineer with a passion for building products for form and function
                 </p>
             </div>
         </section>
