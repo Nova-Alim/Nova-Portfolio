@@ -76,7 +76,7 @@ export default function Hero() {
               <div className="flex items-center gap-2 text-[11px] font-mono uppercase tracking-wider text-white/55">
                 <span className="mission-dot" /> {s.project}
               </div>
-              <div className="mt-2.5 font-mono text-2xl sm:text-3xl font-semibold text-white">
+              <div className="mt-2.5 text-2xl sm:text-3xl font-semibold text-white">
                 <Counter value={s.value} prefix={s.prefix} suffix={s.suffix} />
               </div>
               <div className="mt-1 text-xs sm:text-[13px] text-white/55 leading-snug">{s.label}</div>

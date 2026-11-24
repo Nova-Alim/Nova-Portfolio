@@ -155,7 +155,7 @@ export default function Missions() {
                 <div className="panel-line mt-6 grid gap-2 sm:gap-3" style={{ ["--i" as string]: 3, gridTemplateColumns: `repeat(${m.stats.length}, minmax(0, 1fr))` }}>
                   {m.stats.map((s) => (
                     <div key={s.label} className="stat-chip">
-                      <div className="font-mono text-lg sm:text-2xl font-semibold mission-accent">{s.value}</div>
+                      <div className="text-lg sm:text-2xl font-semibold mission-accent">{s.value}</div>
                       <div className="mt-0.5 text-[11px] sm:text-xs text-white/50 leading-snug">{s.label}</div>
                     </div>
                   ))}

@@ -2,7 +2,7 @@
 @import "lenis/dist/lenis.css";
 
 @theme {
-  --font-sans: "Funnel Display", system-ui, sans-serif;
+  --font-sans: "Tektur", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 }
 
