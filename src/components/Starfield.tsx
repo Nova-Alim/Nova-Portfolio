@@ -17,6 +17,13 @@ type Star = {
 
 type Shooter = { x: number; y: number; vx: number; vy: number; life: number; max: number };
 
+// Overall star brightness (1 = original). "?stars=0.6" in the URL overrides it, for side-by-side comparisons.
+const STAR_BRIGHTNESS = 0.7;
+const brightness = (() => {
+  const q = Number(new URLSearchParams(window.location.search).get("stars"));
+  return q > 0 && q <= 1.5 ? q : STAR_BRIGHTNESS;
+})();
+
 const TINTS = ["255,255,255", "186,214,255", "255,234,208", "206,194,255", "170,240,255"];
 
 function makeSprite(rgb: string): HTMLCanvasElement {
@@ -132,7 +139,7 @@ export default function Starfield() {
 
       for (const s of stars) {
         const tw = reduced ? 1 : 0.5 + 0.5 * Math.sin(t * 0.001 * s.speed + s.phase);
-        const alpha = (0.3 + 0.7 * s.z) * (0.35 + 0.65 * tw);
+        const alpha = (0.3 + 0.7 * s.z) * (0.35 + 0.65 * tw) * brightness;
         const px = s.x - mouse.x * s.z * 22;
         let py = s.y - scroll * (0.03 + s.z * 0.12) - mouse.y * s.z * 22;
         py = ((py % h) + h) % h;

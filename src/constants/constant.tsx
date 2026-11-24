@@ -5,6 +5,12 @@ import naturaLearnImg from "../assets/NaturaLearn.png";
 import hedgeOverviewImg from "../assets/HedgeLab-overview.jpg";
 import hedgeRiskImg from "../assets/HedgeLab-risk.jpg";
 import hedgeMechanicsImg from "../assets/HedgeLab-mechanics.jpg";
+import nestlyHouseImg from "../assets/Nestly-1-house.jpg";
+import nestlyPostcardImg from "../assets/Nestly-2-postcard.jpg";
+import nestlyDarkImg from "../assets/Nestly-3-dark.jpg";
+import nestlyPlacesImg from "../assets/Nestly-4-places.jpg";
+import nestlySouvenirsImg from "../assets/Nestly-5-souvenirs.jpg";
+import nestlyNestImg from "../assets/Nestly-6-nest.jpg";
 
 export const links = {
   email: "novalim1116@gmail.com",
@@ -67,6 +73,29 @@ export const missions: Mission[] = [
       "Runs unattended all day with A/B benchmarks and exponential-backoff error recovery.",
     ],
     stack: ["Python", "Playwright", "JSON-RPC", "OpenERP"],
+  },
+  {
+    id: "nestly",
+    title: "Nestly",
+    year: "Oct 2026",
+    kind: "Social · Full-stack",
+    hue: 38,
+    tagline:
+      "A cozy social productivity app. Friends share a Nest, chase their own goals, and keep one shared streak. When everyone shows up, their Nestling goes on a trip and mails home a postcard.",
+    stats: [
+      { value: "36", label: "tests, incl. real-Postgres ones" },
+      { value: "22", label: "row-level security policies" },
+      { value: "23", label: "server-side reward functions" },
+    ],
+    bullets: [
+      "Group-first rules: a day counts only when every member hits their goal or uses a free pass, and nothing earned is ever lost.",
+      "Acorns, streaks, trips, and feasts are written only by Postgres SECURITY DEFINER functions, with RLS on all 16 tables.",
+      "Hand-drawn SVG world with a walkable house and a traveling pet, plus a demo mode that runs with no backend at all.",
+    ],
+    stack: ["React", "TypeScript", "Supabase", "PostgreSQL", "TanStack Query", "Vitest", "PGlite"],
+    images: [nestlyHouseImg, nestlyPostcardImg, nestlyDarkImg, nestlyPlacesImg, nestlySouvenirsImg, nestlyNestImg],
+    gallery: true,
+    galleryLabels: ["Pip's house", "A postcard home", "Dark mode", "Places to visit", "Friends and souvenirs", "The shared Nest"],
   },
   {
     id: "hedgelabs",

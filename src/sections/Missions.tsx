@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import type { CSSProperties } from "react";
 import SectionHeader from "../components/SectionHeader";
 import { ArrowIcon, Sparkle } from "../components/Icons";
@@ -16,13 +17,60 @@ function Planet({ m, big = false }: { m: Mission; big?: boolean }) {
   );
 }
 
-// Wide app screenshots: one at a time, with tabs to flip between views
+// Full-screen viewer for a gallery shot (portal to <body> so the panel's transforms can't trap it)
+function Lightbox({ m, i, setI, onClose }: { m: Mission; i: number; setI: (n: number) => void; onClose: () => void }) {
+  const imgs = m.images!;
+  const label = (k: number) => m.galleryLabels?.[k] ?? `Screen ${k + 1}`;
+  useEffect(() => {
+    // capture phase so the Missions arrow-key handler doesn't also switch projects
+    const onKey = (e: KeyboardEvent) => {
+      if (!["Escape", "ArrowLeft", "ArrowRight"].includes(e.key)) return;
+      e.stopImmediatePropagation();
+      if (e.key === "Escape") onClose();
+      if (e.key === "ArrowRight") setI((i + 1) % imgs.length);
+      if (e.key === "ArrowLeft") setI((i - 1 + imgs.length) % imgs.length);
+    };
+    window.addEventListener("keydown", onKey, true);
+    return () => window.removeEventListener("keydown", onKey, true);
+  }, [i, imgs.length, onClose, setI]);
+
+  return createPortal(
+    <div className="lightbox" role="dialog" aria-modal="true" aria-label={`${m.title} screenshots`} onClick={onClose} data-lenis-prevent style={hueVars(m)}>
+      <figure className="lightbox-figure" onClick={(e) => e.stopPropagation()}>
+        <img key={imgs[i]} src={imgs[i]} alt={`${m.title}: ${label(i)}`} className="lightbox-img" />
+        <figcaption className="mt-4 flex items-center justify-between gap-4">
+          <span className="text-sm text-white/80">
+            <span className="mission-accent font-semibold">{m.title}</span> · {label(i)}
+            <span className="ml-3 font-mono text-xs text-white/40">
+              {i + 1} / {imgs.length}
+            </span>
+          </span>
+          <span className="flex gap-2">
+            <button onClick={() => setI((i - 1 + imgs.length) % imgs.length)} className="btn-icon" aria-label="Previous screenshot">
+              <ArrowIcon dir="left" className="w-4 h-4" />
+            </button>
+            <button onClick={() => setI((i + 1) % imgs.length)} className="btn-icon" aria-label="Next screenshot">
+              <ArrowIcon className="w-4 h-4" />
+            </button>
+            <button onClick={onClose} className="btn-icon" aria-label="Close">
+              ✕
+            </button>
+          </span>
+        </figcaption>
+      </figure>
+    </div>,
+    document.body
+  );
+}
+
+// Wide app screenshots: one at a time, with tabs to flip between views; click to enlarge
 function Gallery({ m }: { m: Mission }) {
   const [i, setI] = useState(0);
+  const [open, setOpen] = useState(false);
   const imgs = m.images!;
   return (
     <div className="w-full flex flex-col items-center gap-4">
-      <div className="gallery-frame">
+      <button className="gallery-frame cursor-zoom-in" onClick={() => setOpen(true)} aria-label="Enlarge screenshot">
         {imgs.map((src, k) => (
           <img
             key={src}
@@ -33,7 +81,11 @@ function Gallery({ m }: { m: Mission }) {
             decoding="async"
           />
         ))}
-      </div>
+        <span className="gallery-zoom" aria-hidden="true">
+          ⤢ Click to enlarge
+        </span>
+      </button>
+      {open && <Lightbox m={m} i={i} setI={setI} onClose={() => setOpen(false)} />}
       <div className="flex flex-wrap justify-center gap-1.5">
         {imgs.map((src, k) => (
           <button
